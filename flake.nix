@@ -32,12 +32,16 @@
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
 
+              # To stop getting annoying existing file errors
+              home-manager.backupFileExtension = "backup";
+
               home-manager.extraSpecialArgs = inputs // specialArgs;
               home-manager.users.${username} = import ./home/home.nix;
             }
 
             stylix.nixosModules.stylix
             {
+              stylix.enable = true;
               stylix.image = ./homutan_1.jpg;
               stylix.polarity = "dark";
             }
