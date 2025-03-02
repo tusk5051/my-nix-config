@@ -5,12 +5,14 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
     home-manager.url = "github:nix-community/home-manager/release-24.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    stylix.url = "github:danth/stylix/release-24.11";
   };
 
   outputs = inputs @ {
     self,
     nixpkgs,
     home-manager,
+    stylix,
     ...
   }: {
     nixosConfigurations = {
@@ -32,6 +34,12 @@
 
               home-manager.extraSpecialArgs = inputs // specialArgs;
               home-manager.users.${username} = import ./home/home.nix;
+            }
+
+            stylix.nixosModules.stylix
+            {
+              stylix.image = ./homutan_1.jpg;
+              stylix.polarity = "dark";
             }
           ];
         };
