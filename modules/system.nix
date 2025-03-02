@@ -66,7 +66,15 @@
   programs.steam.enable = true;
 
   # Enable LACT service
-  systemd.services.lactd.enable = true;
+  systemd.services.lact = {
+    description = "AMDGPU Control Daemon";
+    after = ["multi-user.target"];
+    wantedBy = ["multi-user.target"];
+    serviceConfig = {
+      ExecStart = "${pkgs.lact}/bin/lact daemon";
+    };
+    enable = true;
+  };
 
   # Enable sound with pipewire.
   hardware.pulseaudio.enable = false;
