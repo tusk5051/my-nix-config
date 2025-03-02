@@ -18,8 +18,11 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  # Enable full feature flags for RX7900XTX
+  # Enable AMD stuff for RX7900XTX
+  services.xserver.videoDrivers = [ "amdgpu" ];
   boot.kernelParams = [ "amdgpu.ppfeaturemask=0xffffffff" ];
+  hardware.graphics.enable32Bit = true; # For 32 bit applications
+  hardware.opengl.driSupport32Bit = true; # For 32 bit applications
 
   networking.hostName = "dungeon"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.

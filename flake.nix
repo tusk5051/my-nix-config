@@ -33,6 +33,7 @@
               home-manager.useUserPackages = true;
 
               # To stop getting annoying existing file errors
+              # TODO: I HATE THIS. NEED TO MANUALLY DELETE /home/succoria/.gtkrc-2.0.backup
               home-manager.backupFileExtension = "backup";
 
               home-manager.extraSpecialArgs = inputs // specialArgs;
